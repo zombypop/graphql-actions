@@ -33,4 +33,4 @@ jobs:
 
     - name: push docker image
       run: |
-        docker push zombypop/docker-graphql:1.0.0 . 
+        docker push zombypop/docker-graphql:1.0.0
