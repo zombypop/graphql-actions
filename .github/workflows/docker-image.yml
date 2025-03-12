@@ -30,7 +30,9 @@ jobs:
     - name: build docker image
       run: |
         docker build -t zombypop/docker-graphql:1.0.0 . 
+        docker build -t zombypop/docker-graphql:latest . 
 
     - name: push docker image
       run: |
         docker push zombypop/docker-graphql:1.0.0
+        docker push zombypop/docker-graphql:latest
