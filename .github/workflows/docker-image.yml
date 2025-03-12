@@ -30,7 +30,7 @@ jobs:
       env:
         DOCKER_USER: ${{ secrets.DOCKER_USER }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        VERSION: ${{ steps.version.output.version }}
+        VERSION: ${{ steps.version.outputs.version }}
       
       run: |
         echo "version: $VERSION -----------------"
