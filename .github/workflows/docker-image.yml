@@ -26,3 +26,11 @@ jobs:
         echo "inicia login"
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
         echo "fin login"
+
+    - name: build docker image
+      run: |
+        docker build -t zombypop/docker-graphql:1.0.0 . 
+
+    - name: push docker image
+      run: |
+        docker push zombypop/docker-graphql:1.0.0 . 
