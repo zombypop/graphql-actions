@@ -38,12 +38,18 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
         echo "fin login"
 
-#    - name: build docker image
-#      run: |
-#        docker build -t zombypop/docker-graphql:1.0.0 . 
-#        docker build -t zombypop/docker-graphql:latest . 
+    - name: build docker image
+      env: 
+        NEW_VERSION : ${{ steps.version.outputs.version }}
+        
+      run: |
+        echo "$VERSION -> $NEW_VERSION" 
+        docker build -t zombypop/docker-graphql:$NEW_VERSION . 
+        docker build -t zombypop/docker-graphql:latest . 
 
-#    - name: push docker image
-#      run: |
-#        docker push zombypop/docker-graphql:1.0.0
-#        docker push zombypop/docker-graphql:latest
+    - name: push docker image
+      env: 
+          NEW_VERSION : ${{ steps.version.outputs.version }}
+      run: |
+        docker push zombypop/docker-graphql:$NEW_VERSION
+        docker push zombypop/docker-graphql:latest
